@@ -1,0 +1,4 @@
+.gitignore
+.env dont on ecrit les donnees privés 
+env.exemple.txt :lautre personne va copier ce quil ya dedant il le met dans son .env
+npm i joi pour faire la validation coté expresse js 
