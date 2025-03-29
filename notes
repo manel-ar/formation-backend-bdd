@@ -1,4 +1,13 @@
-.gitignore
+.gitignore: est utilisé pour indiquer à Git quels fichiers et dossiers ne doivent pas être suivis ni versionnés
 .env dont on ecrit les donnees privés 
 env.exemple.txt :lautre personne va copier ce quil ya dedant il le met dans son .env
 npm i joi pour faire la validation coté expresse js 
+1.git status pour est utilisée pour afficher l'état actuel de votre dépôt Git
+2.git add .
+3.git commit -m "initial project-add authors routes and models" pour specifier les changement
+4.git push  est utilisée pour envoyer les modifications d'un depot local a un depot distant (github)
+packages :npm,npx,,,,
+au lieu dutiliser try catch on utilise "express-async-handler" pour diminuer le code 
+mongo version 2.1.5
+sort: pour ordonner les informations
+populate:pour les jointures 

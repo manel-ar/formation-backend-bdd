@@ -1,60 +1,20 @@
-const {Author, validateCreateAuthor,validateUpdateAuthor }=require("../models/author.model");
 
-const express=require("express");
+const express = require("express");
 
-const router=express.Router();
+const router = express.Router();
+const {createAuthor,updateAuthor,getAllAuthors,getAuthor,deleteAuthor} = require("../controllers/author.controller.js")
 
-//pour renvoyer des données
+//pour renvoyer des données(ajouter un auteur)
 
-router.post("/",async (req,res)=>{
-  try{
-    const {error}=validateCreateAuthor(req.body);
-
-    if(error)
-        return res.status(400).send(error.details[0].message);
-
-    const author=new Author({
-        firstname:req.body.firstname,
-        lastname:req.body.lastname,
-        nationality:req.body.nationality
-    });
-
-    await author.save();
-
-    res.status(201).json(author)
-  
-
-
-    }catch(error){
-
-        res.status(500).json({message:'Une erreur a été détectée'});
-    }
-
-});
-
-router.put("/:id",async (req,res)=>{
-    
-    const {error}=validateUpdateAuthor(req.body);
-    
-    if(error)
-        return res.status(400).send(error.details[0].message);
-
-
-    const author=await Author.findByIdAndUpdate(req.params.id,
-        {
-        $set: {
-        firstname:req.body.firstname,
-        lastname:req.body.lastname,
-        nationality:req.body.nationality
-    }
-    },{new:true});
-
-    res.status(201).send(author);
-
-
-});
-
-
-module.exports=router;
+router.post("/", createAuthor);
+// modifier un auteur
+router.put("/:id",updateAuthor );
+// retourner la liste des utilisateurs 
+router.get("/",getAllAuthors);
+// recuperer un auteur par son id
+router.get("/:id",getAuthor);
+// supprimer un auteur (par son id)
+router.delete("/:id",deleteAuthor);
+module.exports = router;
 
 
